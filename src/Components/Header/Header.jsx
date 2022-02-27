@@ -1,11 +1,15 @@
 import './Header.scss'
 
-const Header = () => {
+const Header = ({title}) => {
     return (
         <div className="header">
-            <h1>Grocery List</h1>
+            <h1>{title}</h1>
         </div>
     )
+}
+
+Header.defaultProps = {
+    title: "Default Title"
 }
 
 export default Header
