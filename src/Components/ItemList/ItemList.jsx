@@ -1,11 +1,21 @@
 import EachItem from '../EachItem/EachItem'
 import './ItemList.scss'
-
-const ItemList = ({items, handleCheck, handleDelete}) => {
+import AddItem from '../AddItem/AddItem'
+import Search from '../Search/Search'
+const ItemList = ({items, handleCheck, handleDelete, searchItem, setSearchItem, handleAddButton, newItem, setNewItem}) => {
 
     return (
         <main className="item-list">
-            {(items.length>0)?
+            <AddItem
+                handleAddButton={handleAddButton}
+                newItem={newItem}
+                setNewItem={setNewItem}
+            />
+            <Search 
+                searchItem={searchItem}
+                setSearchItem={setSearchItem} 
+            />
+            {(items.length>0 || !items)?
                     items.map((item) =>  (
                         <EachItem 
                             handleCheck={handleCheck} 
@@ -13,7 +23,7 @@ const ItemList = ({items, handleCheck, handleDelete}) => {
                             key={item.id} 
                             item={item}
                         />)
-                    ) :<div className="add-item">Add Items</div>}
+                    ) : <div className="additem">Add Items</div>}
         </main>
     )
 }
